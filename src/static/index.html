@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mergington High School Activities</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* 背景アニメーション用canvasのスタイル */
+      #branch-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .mascot {
+        width: 80px;
+        margin: 0 10px;
+        vertical-align: middle;
+      }
+    </style>
   </head>
   <body>
+    <canvas id="branch-bg"></canvas>
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
+      <div>
+        <!-- Octodex mascots -->
+        <img src="https://octodex.github.com/images/Professortocat_v2.png" alt="Professortocat" class="mascot" />
+        <img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" alt="Daftpunktocat" class="mascot" />
+        <img src="https://octodex.github.com/images/collabocats.jpg" alt="Collabocats" class="mascot" />
+      </div>
     </header>
 
     <main>
