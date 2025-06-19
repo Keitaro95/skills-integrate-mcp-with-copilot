@@ -155,6 +155,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // 背景アニメーション: Git風ブランチライン
+  function animateBranchLines() {
+    const canvas = document.getElementById("branch-bg");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    ctx.clearRect(0, 0, w, h);
+
+    // ブランチ数・色
+    const branchCount = 6;
+    const colors = ["#7ed957", "#bfffac", "#fff", "#caff70"];
+    for (let i = 0; i < branchCount; i++) {
+      const yStart = (h / branchCount) * i + 40 * Math.sin(Date.now() / 1200 + i);
+      ctx.beginPath();
+      ctx.moveTo(0, yStart);
+      for (let x = 0; x < w; x += 40) {
+        const y = yStart + 20 * Math.sin((x / 120) + Date.now() / 1800 + i * 2);
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = colors[i % colors.length];
+      ctx.lineWidth = 2 + (i % 2);
+      ctx.globalAlpha = 0.25;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    requestAnimationFrame(animateBranchLines);
+  }
+
   // Initialize app
   fetchActivities();
+  animateBranchLines();
 });
